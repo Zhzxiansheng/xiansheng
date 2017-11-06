@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .container{
+        margin: 50px auto;
+        width: 500px;
+        height: 600px;
+        background-color: #fff;
+        position: relative;
+      }
+      p{
+        font-size: 20px;
+      }
+      .boxShadow{
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-image: linear-gradient(rgba(255,255,255,0) 0,#fff 100%);
+        background-image: -webkit-linear-gradient(rgba(255,255,255,0) 0,#fff 100%);
+      }
+      .undeshadow{
+        width: 500px;
+        height: 200px;
+        background-color: #fff;
+        margin:20px auto;
+      }
+      .undeshadow1{
+        box-shadow: 0 0 5px #888;
+      }
+      .undeshadow2{
+        box-shadow: 0 3px 3px rgba(0,0,0,0.1);
+        border-top: 1px solid #ebebeb;
+        border-left: 1px solid #ebebeb;
+        border-right: 1px solid #ebebeb;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="exit">
+      <p>利： 1. 菜鸟这么看：太酷了，那可是Google的DNS； 2. 不会被ISP的DNS劫持，心情不会被ISP弄坏； 3. 可访问的网页比ISP的DNS更多； 弊： 1. 老鸟这么看：真没想到这哥们这么傻，现在还用8888，他的建议以后可不能再听了； 2. 忍受网络龟速，8888解析的结果常将用户引导到较慢的网站； 分析： 大中型网站目前都使用CDN做内容分发，确保用户就近接入而提高访问速度。同样的内容如taobao网页，深圳宽带用户访问的是taobao在广东的服务器，北京宽带用户访问的是taobao在北京的服务器。CDN是怎么做到就近接入的呢？关键就在于你用的DNS，你用哪个地方的DNS互联网公司基本认为你就是那个地方的宽带用户。如果你将DNS写错了，比如深圳宽带用户将DNS填写成北京的DNS，那么无论你访问taobao、sina你都被引导到北京去，网速自然慢了许多。所以说，DNS是流量牵引器，必须选合适的。 说到这里，明白在国内使用8888的坏处了吧？你将DNS填8888，互联网公司都以为你是国外的用户，无法给你选出就近的服务器，随便给你个能用的就行了，你的网速自然慢了许多。 如果你无法忍受ISP的DNS劫持，又想访问一些用ISP的DNS无法访问的网页，那可以使用114.114.114.114，它在国内有几十个点，能引导你到最近的网站，没有8.8.8.8的弊端。 评论：炫耀8888的代价是网速大幅下降，在国内用8888害人害己 ！</p>
+      <div class="boxShadow">
+
+      </div>
+    </div>
+
+    <div class="undeshadow2 undeshadow">
+
+    </div>
+
+    <div class="undeshadow undeshadow1">
+
+    </div>
+
+
+  </body>
+</html>

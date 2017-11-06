@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+
+    <input type="text">
+    <input type="text">
+    <input type="text">
+
+    <img src="" alt="">
+    <img src="" alt="">
+    <img src="" alt="">
+    <img src="" alt="">
+    <img src="" alt="">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <h3></h3>
+    <h3></h3>
+    <h2></h2>
+
+  </body>
+  <script type="text/javascript">
+  // <img src = "" onerror ="alert('错误')" />
+    var url = 'https://www.baidu.com/s?ie=utf-8&f=3&rsv_bp=1&rsv_idx=2&tn=baiduhome_pg&wd=%3Cimg%20src%20%3D%20%22%22%20onerror%20%3D%22alert(%27%E9%94%99%E8%AF%AF%27)%22%20%2F%3E%20&rsv_spt=1&oq=%2526lt%253Bimg%2520src%2520%253D%2520%2526quot%253B%2526quot%253B%2520onerror%2520%253D%2526quot%253Balert(%2526quot%253B%25E9%2594%2599%25E8%25AF%25AF%2526quot%253B)%2526quot%253B%2520%252F%2526gt%253B&rsv_pq=c5d58dee0001cfa1&rsv_t=eba6env86c4LGM8IrFrgr5fOsU3RyXcn5KVQP5CmHx6bcICeQINqIzWJ5WWNL39X7Kh3&rqlang=cn&rsv_enter=1&inputT=5937&rsv_sug3=13&rsv_sug2=0&prefixsug=%2526lt%253Bimg%2520src%2520%253D%2520%2526quot%253B%2526quot%253B%2520onerror%2520%253D%2526quot%253Balert(%2526%252339%253B%25E9%2594%2599%25E8%25AF%25AF%2526%252339%253B)%2526quot%253B%2520%252F%2526gt%253B%2520&rsp=0&rsv_sug4=7016';
+    url = url.split('?')[1];
+    url = url.split("&");
+    var obj = {};
+    for(var i = 0; i<url.length; i++){
+      var key = url[i].split("=")[0];
+      var value = url[i].split("=")[1];
+      obj[key] = value;
+    }
+    console.log(obj);
+    var wd = obj.wd;
+    console.log(encodeURIComponent("Hello world")); // 字符串转成， 乱码
+    var x = decodeURIComponent(wd);  // 乱码，转成字符串
+    console.log(x);
+    // document.body.innerHTML= x; // 会在页面中执行这行代码
+
+    // 数组顺序打乱，重新罗列
+    function randomSort(arr, newArr) {
+    // 如果原数组arr的length值等于1时，原数组只有一个值，其键值为0
+    // 同时将这个值push到新数组newArr中
+      if(arr.length == 1) {
+      newArr.push(arr[0]);
+      return newArr; // 相当于递归退出
+      }
+      // 在原数组length基础上取出一个随机数
+      var random = Math.ceil(Math.random() * arr.length) - 1;
+      // 将原数组中的随机一个值push到新数组newArr中
+      newArr.push(arr[random]);
+      // 对应删除原数组arr的对应数组项
+      arr.splice(random,1);
+      return randomSort(arr, newArr);
+    }
+
+    // 调用
+    for (var i = 0; i < 10; i++) {
+      var arr=[1,2,3,4,5,6,7,8,9,10];
+      var newArr=[];
+      randomSort(arr,newArr);
+    }
+    console.log(newArr); // 打乱顺序后的数组
+
+
+
+    // 获取页面中最多个数的标签
+    // 首先获取到所有标签
+    var allsign  = document.getElementsByTagName('*');
+    console.log(allsign);
+
+    var singObj = {};
+    var p = 0;
+    for(var j=0; j<allsign.length; j++){
+      console.log(allsign[j].tagName);
+      if(allsign[j].tagName == "P"){
+        p++
+      }else if (allsign[j].tagName == "SECTION") {
+        p++
+      }
+
+      singObj[allsign[j].tagName] = "这里应该写什么才是标签key 对应的个数呢";
+    }
+    console.log(p);
+    console.log(singObj);
+
+  </script>
+</html>

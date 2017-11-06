@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .con{
+        width: 200px;
+      }
+      /*body,p{margin: 0;}*/
+hbody,p{margin: 0;}
+h2{margin: 0;font-size:100%;}
+ul{margin: 0;padding: 0;list-style: none;}
+a{text-decoration: none;color:inherit;}
+.box{width: 572px;border: 1px solid #999;overflow: hidden;}
+.nav{margin-left: -1px;font: 14px "微软雅黑";overflow: hidden;background-color: #f1f1f1;}
+.navI{float: left;width: 33.333%;box-sizing: border-box;}
+.navI-tit{line-height: 40px;text-align: center;cursor: pointer;border-left: 1px solid #cecece;border-bottom: 1px solid #cecece;}
+.navI-txt{width: 572px;height:200px;text-indent:2em;line-height: 2;background:#fff;}
+.ml1{margin-left: -100%;}
+.ml2{margin-left: -200%;}
+.navI_active{position:relative;z-index:1;}
+/*重点代码*/
+.navI:hover{position:relative;z-index:1;}
+.navI:hover .navI-tit{background:#fff;border-bottom:none;}
+    </style>
+  </head>
+  <body>
+    <div class="con">
+      <canvas id="canvas" width="100%" height="100" width="700"></canvas>
+    </div>
+    <div class="box">
+    <ul class="nav">
+        <li class="navI navI_active">
+            <h2 class="navI-tit">课程</h2>
+            <p class="navI-txt">课程内容</p>
+        </li>
+        <li class="navI">
+            <h2 class="navI-tit">学习计划</h2>
+            <p class="navI-txt ml1">学习计划内容</p>
+        </li>
+        <li class="navI">
+            <h2 class="navI-tit">技能图谱</h2>
+            <p class="navI-txt ml2">技能图谱内容</p>
+        </li>
+    </ul>
+</div>
+  </body>
+  <script src="canvansTime.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    var canvas = document.getElementById("canvas");
+    canvas.style.width = "100%";
+  </script>
+</html>

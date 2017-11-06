@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div>
+      <p>你好，<span id='nickName'></span></p>
+      <div id="introduce"></div>
+    </div>　　
+  </body>
+  <script type="text/javascript">
+  var o = {}; // 创建一个新对象
+// Example of an object property added with defineProperty with a data property descriptor
+Object.defineProperty(o, "a", {value : 37,
+                             writable : true,
+                             enumerable : true,
+                             configurable : true});
+// 对象o拥有了属性a，值为37
+
+// Example of an object property added with defineProperty with an accessor property descriptor
+var bValue;
+Object.defineProperty(o, "b", {get : function(){ return bValue; },
+                             set : function(newValue){ bValue = newValue; },
+                             enumerable : true,
+                             configurable : true});
+              o.b = 38;
+
+
+      var userInfo = {};
+          Object.defineProperty(userInfo, "nickName", {
+              get: function(){
+                  return document.getElementById('nickName').innerHTML;
+              },
+              set: function(nick){
+                  document.getElementById('nickName').innerHTML = nick;
+              }
+          });
+          Object.defineProperty(userInfo, "introduce", {
+              get: function(){
+                  return document.getElementById('introduce').innerHTML;
+              },
+              set: function(introduce){
+                  document.getElementById('introduce').innerHTML = introduce;
+              }
+          })
+
+          userInfo.nickName = "大兄弟";
+          userInfo.introduce = "我是你XX，我来自云南，..."
+  </script>
+</html>

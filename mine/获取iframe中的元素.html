@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>获取iframe中的元素</title>
+    <style media="screen">
+      #iframe{
+        background-color: #fff
+      }
+    </style>
+  </head>
+  <body>
+    <div class="">
+      <iframe src="shadow.html" width="100%" height="600px" id="iframe" class="123"></iframe>
+    </div>
+
+  </body>
+  <script src="jquery-3.2.1.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  window.onload = function(){
+    function getIframeContent(){  //获取iframe中文档内容
+       var doc;
+       if (document.all){ // IE
+        doc = document.frames["iframe"].document;
+       }else{ // 标准
+        doc = document.getElementById("iframe").contentWindow;
+       }
+        console.log(doc.document.getElementById("exit"));
+    }
+    getIframeContent();
+  }
+  console.log($('#ifranme'));
+  </script>
+</html>

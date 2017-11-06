@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <style media="screen">
+
+      .div{
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        -webkit-transform: translateX(200px)
+        -moz-transform: translateX(200px)
+        -ms-transform: translateX(200px)
+        -o-transform: translateX(200px)
+        transform: translateX(200px)
+        behavior: url(ie-css3.htc); /* 通知IE浏览器调用脚本作用于'box'类 */
+      }
+    </style>
+    <!--[if IE]>
+      <h1>您正在使用IE浏览器</h1>
+      <!--[if IE 5.0]>
+          <h2>版本 5.0</h2>
+      <![endif]-->
+      <!--[if IE 6]>
+          <h2>版本 6</h2>
+      <![endif]-->
+      <!--[if IE 7]>
+          <h2>版本 7</h2>
+        <link rel="stylesheet" href="ie7.css">
+      <![endif]-->
+      <!--[if IE 8]>
+          <h2>版本 8</h2>
+      <link rel="stylesheet" href="ie8.css">
+      <![endif]-->
+
+      <!--[if IE 9]>
+          <h2>版本 9</h2>
+          <link rel="stylesheet" href="ie9.css">
+      <![endif]-->
+  </head>
+  <body>
+    <div class="con">
+      <div class="div"></div>
+    </div>
+
+  </body>
+</html>

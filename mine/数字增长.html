@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <textarea name="name" rows="8" cols="80" id="jsgo">
+      var a = 2;alert(a)
+    </textarea>
+    <button type="button" name="button" id="btn">执行</button>
+
+    <div class="num">
+
+    </div>
+    <div class="" id="show">
+
+    </div>
+    <script src="jquery-3.2.1.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    function test(str){
+      alert(str)
+    }
+
+    $('#btn').click(function(){
+      var text =$('#jsgo').val();
+      var a = new Function(text);
+      a()
+    });
+
+      function upNum (num) {
+        num = parseInt(num);
+        for(var i = 0; i<num; i++){
+
+        }
+      }
+      // upNum();
+
+      var num = 1;
+        var time = setInterval(function() {
+            var len = 3;//显示的长度
+            num = parseInt(num, 10) + 1;
+            num = num.toString();
+            while(num.length < len) {
+                num = '0' + num;
+            }
+            document.getElementById('show').innerHTML = num;
+            num = parseInt(num);
+          if(num >= 100){
+            clearInterval(time);
+          }
+        }, 10)
+
+    </script>
+
+  </body>
+</html>
