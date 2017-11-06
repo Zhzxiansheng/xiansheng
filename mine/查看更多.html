@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta id="viewport" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1; user-scalable=no;">
+    <title></title>
+    <style media="screen">
+    .con{
+      overflow: hidden;
+      position: relative;
+      transition: all 1s;
+      text-overflow: ellipsis;
+    }
+    .more{
+      color: orange;
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+      padding:0 10px;
+      background-color: #fff;
+      display: none;
+    }
+    </style>
+  </head>
+  <body>
+  <div class="con">
+    【不说清需求价值】，技术问“为什么要做”的时候，支支吾吾，或者说“老板要的、运营要的”，假装是个传话筒，因为接二手需求，并不知道、也没有去追溯这个需求的初衷。相反，切忌不要有理有据的顶老板，那会让大家喜欢上你；
+【不去想功能细节】，技术问细节（当然，是涉及业务的细节，不是技术实现细节）的时候，自己装作还没想过，现场想——这样做吧，那样做也可以，或者你定吧……要巧妙的被发现，这时候你已经能听到技术的心里话啦——傻逼；
+【帮技术评估工作量】，特别是技术出身的产品经理，最容易做到，潜台词就是“希望加活”，我评估过了，这些都能做掉的，不要给我偷懒，哈哈哈哈哈哈；切忌，不要把他们当人，而要当「资源」；
+【逼着技术团队承诺】，哼哼，公事公办，如果技术承诺了，但却做不到，这样自己就没责任了，可能对方会说——很多事情，在开始的时候是谁也不知道的，应该大家在一条船上同舟共济，这就是“接力跑”和“踢足球”在交棒/传球之后的区别。你可以回：我不管我不管我不管；
+    <!-- <span class="more">...查看更多</span> -->
+  </div>
+  </body>
+  <script src="jquery-3.2.1.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  function processStr(str,n)
+  {
+      var l = str.length;
+      if(l<=n){
+         return str
+      }else{
+        return str.slice(0,l-5)+"...//";
+      }
+  }
+    $('.more').click(function(){
+      $(this).hide();
+      $('.con').css({
+        height: "auto",
+      });
+    });
+    var vlaue = $('.con').text();
+    processStr(vlaue,10)
+
+
+
+  </script>
+</html>

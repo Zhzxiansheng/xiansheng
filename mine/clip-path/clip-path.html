@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>clip-path</title>
+		<link rel="stylesheet" type="text/css" href="clip-path.css"/>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.wrap{
+				margin: 100px;
+				width: 500px;
+				height: 500px;
+				border: 1px dashed royalblue;
+				float: left;
+			}
+			#clip{
+				width: 80%;
+				margin: 10%;
+				height: 80%;
+				border: 1px dashed orange;
+				background-color: orange;
+				transition: all 0.5s;
+			}
+			.changeImg{
+				height: 500px;
+				width: 150px;
+				border: 1px dashed royalblue;
+				float: left;
+				margin-top: 100px;
+			}
+			.changeImg li{
+				list-style: none;
+				width: 100%;
+				height: 120px;
+				border-bottom: 5px solid greenyellow;
+			}
+			.changeImg li img{
+				width: 100%;
+				height: 100%;
+			}
+			#btnCotainer{
+				clear: both;
+				border: 1px dashed royalblue;
+				padding: 20px;
+				width: 80%;
+				margin: auto;
+			}
+			#btnCotainer button{
+				padding: 5px 10px;
+				border-radius: 5px;
+				border: 1px solid #ccc;
+				margin-right: 10px;
+				margin-top: 10px;
+			}
+			#container{
+				margin: auto;
+				overflow: hidden;
+				max-width: 1000px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" name="" value="">
+		<div id="container">
+			<div class="wrap">
+			<div class="clip" id="clip"></div>
+			</div>
+			<ul id="" class="changeImg">
+			<li>
+				<img src="1.png"/>
+			</li>
+			<li>
+				<img src="2.png"/>
+			</li>
+			<li>
+				<img src="3.png"/>
+			</li>
+			<li>
+				<img src="4.png"/>
+			</li>
+		</ul>
+		</div>
+
+		<div id="btnCotainer">
+			<button data-name="filsh">filsh</button>
+			<button data-name="Triangle">Triangle</button>
+			<button data-name="Trapezoid">Trapezoid</button>
+			<button data-name="Parallelogram">Parallelogram</button>
+			<button data-name="Rhombus">Rhombus</button>
+			<button data-name="Pentagon">Pentagon</button>
+			<button data-name="Hexagon">Hexagon</button>
+			<button data-name="Heptagon">Heptagon</button>
+			<button data-name="Octagon">Octagon</button>
+			<button data-name="Nonagon">Nonagon</button>
+			<button data-name="Bevel">Bevel</button>
+			<button data-name="Rabbet">Rabbet</button>
+
+			<button data-name="Leftarrow">Leftarrow</button>
+			<button data-name="Rightarrow">Rightarrow</button>
+			<button data-name="LeftPoint">LeftPoint</button>
+			<button data-name="RightPoint">RightPoint</button>
+			<button data-name="leftChevron">leftChevron</button>
+			<button data-name="rightChevron">rightChevron</button>
+			<button data-name="start">start</button>
+			<button data-name="cross">cross</button>
+			<button data-name="message">message</button>
+			<button data-name="close">close</button>
+			<button data-name="frame">frame</button>
+			<button data-name="inset">inset</button>
+			<button data-name="ellipse">circle</button>
+
+
+
+		</div>
+	</body>
+	<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$("#btnCotainer button").on("click",function(){
+			var thisClass = $(this).data("name");
+			$("#clip").attr("class",thisClass);
+		});
+		$(".changeImg li img").click(function(){
+			var img = $(this).attr("src");
+			$("#clip").css({
+				backgroundImage:"url("+img+")",
+				backgroundSize:"100% 100%",
+				backgroundRepeat:"no-repeat"
+			});
+		});
+	</script>
+</html>
