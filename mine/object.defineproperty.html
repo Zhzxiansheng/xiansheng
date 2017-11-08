@@ -11,6 +11,7 @@
     </div>　　
   </body>
   <script type="text/javascript">
+  //  第一种
   var o = {}; // 创建一个新对象
 // Example of an object property added with defineProperty with a data property descriptor
 Object.defineProperty(o, "a", {value : 37,
@@ -25,9 +26,12 @@ Object.defineProperty(o, "b", {get : function(){ return bValue; },
                              set : function(newValue){ bValue = newValue; },
                              enumerable : true,
                              configurable : true});
-              o.b = 38;
+              o.b = "添加值";
+
+              console.log(o);
 
 
+// 第二种
       var userInfo = {};
           Object.defineProperty(userInfo, "nickName", {
               get: function(){
@@ -46,7 +50,7 @@ Object.defineProperty(o, "b", {get : function(){ return bValue; },
               }
           })
 
-          userInfo.nickName = "大兄弟";
+          userInfo.nickName = "张浩壮";
           userInfo.introduce = "我是你XX，我来自云南，..."
   </script>
 </html>

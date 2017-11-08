@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>map</title>
+  </head>
+  <body>
+
+  </body>
+  <script type="text/javascript">
+    var arr = [2,4,6,8,10]
+    var res = arr.map(function (item,index,input) {
+      console.log(item); // item  是数组中的元素， 2,4,6,8,10
+      // console.log(index); // index  是下标 0,1,2,3,4
+      // console.log(input); // input 就是遍历的本身 [2,4,6,8,10]
+    })
+    var json = [{  id: 1,
+              name: '蔬菜',
+              child: [{
+                  id: '1',
+                  name: '白菜'
+              }, {
+                  id: '2',
+                  name: '萝卜'
+              }, {
+                  id: '3',
+                  name: '菠菜'
+              }]
+          }, {
+              id: 2,
+              name: '肉类',
+              child: [{
+                  id: '1',
+                  name: '猪肉'
+              }, {
+                  id: '2',
+                  name: '羊肉'
+              }, {
+                  id: '3',
+                  name: '牛肉'
+              }]
+          }, {
+              id: 3,
+              name: '蛋类',
+              child: [{
+                  id: '1',
+                  name: '鸡蛋'
+              }, {
+                  id: '2',
+                  name: '鹅蛋'
+              }, {
+                  id: '3',
+                  name: '鸭蛋'
+              }]
+          }];
+
+    var data = json.map(function (item,index,con) {
+        console.log(item);
+        var dataJson = item.child.map(function (item2,index2) {
+          console.log(item2);
+        })
+    })
+  </script>
+</html>
