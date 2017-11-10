@@ -8,8 +8,11 @@
     <div>
       <p>你好，<span id='nickName'></span></p>
       <div id="introduce"></div>
-    </div>　　
+    </div>　
+    <p> <input type="text" class="nickName" name="" value="数据双向绑定"> </p>
+    <p> <input type="text" class="introduce" name="" value="Object.defineProperty"> </p>
   </body>
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js" charset="utf-8"></script>
   <script type="text/javascript">
   //  第一种
   var o = {}; // 创建一个新对象
@@ -50,7 +53,12 @@ Object.defineProperty(o, "b", {get : function(){ return bValue; },
               }
           })
 
-          userInfo.nickName = "张浩壮";
-          userInfo.introduce = "我是你XX，我来自云南，..."
+          userInfo.nickName = $(".nickName").val();
+          userInfo.introduce = $(".introduce").val();
+          $("input").keyup(function(){
+            userInfo.nickName = $(".nickName").val();
+            userInfo.introduce = $(".introduce").val();
+          });
+
   </script>
 </html>
