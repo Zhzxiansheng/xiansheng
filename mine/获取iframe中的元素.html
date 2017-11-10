@@ -10,6 +10,7 @@
     </style>
   </head>
   <body>
+    <p>这里的重点是，获取元素必须在 window.onload 事件中， 否则会出现无法获取到的情况</p>
     <div class="">
       <iframe src="shadow.html" width="100%" height="600px" id="iframe" class="123"></iframe>
     </div>
@@ -30,5 +31,11 @@
     getIframeContent();
   }
   console.log($('#ifranme'));
+
+
+// 也可以尝试jq 获取元素
+  window.onload = function(){
+      $(document.getElementById("iframe").contentWindow.document).find('.p').hide();
+  }
   </script>
 </html>
