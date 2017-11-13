@@ -3,8 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>map</title>
-  </head>
-  <body>
+    <style media="screen">
+        .la{
+          display: inline-block;
+          width: 100%;
+          height: 100px;
+          background-color: red;
+        }
+        .data_custom{display: inline-block;position: relative;}
+        .data_custom:hover{color:transparent;}
+        .data_custom:hover::after{content: attr(data-hover-response);color: red;position: absolute;left: 0;}
+      </style>
+    </head>
+    <body>
+      <la class="la">232323</la>
+      <a href="#" class="data_custom" data-hover-response="你碰我了我内容就要改变！">鼠标碰我一下试试！</a>
+
+
+      <img src="http://imgs.aixifan.com/content/2016_06_04/1465031877.gif" alt="" style="width:100px;height:100px;display:none;">
 
   </body>
   <script type="text/javascript">
