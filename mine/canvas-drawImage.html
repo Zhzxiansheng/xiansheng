@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>canvas 生成img 图片</title>
+  </head>
+  <body>
+    <canvas width="1000" height="600" id="myCanvas" stylle="width:1000px;height:600px;"></canvas>
+  </body>
+  <script type="text/javascript">
+
+    var canvas=document.getElementById('myCanvas');
+    var ctx=canvas.getContext('2d');
+    var imagUrls=["1.png","1.png","1.png"];
+      var n=0;
+
+      loadImg();
+      var y = 0;
+      var x = 100;
+      function loadImg(){
+       if(n<imagUrls.length){
+           var img=new Image();
+           img.src=imagUrls[n];
+           img.onload=onloaded;
+       }
+       else{
+           console.log("图片加载完了");
+           convertCanvasToImage(canvas)
+       }
+      }
+
+      function convertCanvasToImage(canvas) {
+      	var image = new Image();
+        console.log(canvas.toDataURL());
+        image.setAttribute("crossOrigin",'Anonymous')
+      	image.src = canvas.toDataURL("image/png");
+
+        // canvas-drawImage.html:34 Uncaught DOMException: Failed to execute 'toDataURL' on 'HTMLCanvasElement': Tainted canvases may not be exported.
+        // 这里会报这样一份错误，是因为使用了外域的图片资源，解决方法是：搭建本地服务器
+
+      	return image;
+      }
+      function onloaded(e){
+        x = x+100;
+        // y = y+100;
+        console.log(x,y);
+        // 这里的 xy  是下面的图的排列
+       var img=e.target;
+       console.log(e,img);
+       ctx.drawImage(img,0,y);
+       y = y+120;
+       n++;
+       loadImg();
+      }
+</script>
+</html>
