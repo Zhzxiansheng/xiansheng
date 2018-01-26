@@ -56,6 +56,16 @@
       const set = new Set([1, 2, 3, 4, 4]);
       var fiveArr = [...set]; //这就是去重过后的新数组
       console.log([...set]);
+      // ... 是扩展运算符 （spread）  作用：1.将一个数组转为用逗号分隔的参数序列。2. 可以代替数组的apply方法
+
+      // ES5 的写法  
+        var arr1 = [0, 1, 2];
+        var arr2 = [3, 4, 5];
+        Array.prototype.push.apply(arr1, arr2);
+        // ES6 的写法  
+        var arr1 = [0, 1, 2];
+        var arr2 = [3, 4, 5];
+        arr1.push(...arr2);  
 
 
 

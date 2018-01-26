@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3>关于原型的几个概念</h3>
+    <ol>
+        <li>prototype属性</li>
+        <li>_proto_属性</li>
+        <li>constructor属性</li>
+    </ol>
+    <p>
+        他们的关系是:  <br>
+        function / <br>
+           &nbsp;|--prototype <br>
+             &nbsp;&nbsp; |-constructor  <br>
+             &nbsp;&nbsp; |- _proto_
+               
+    </p>
+    <h3>关于prototype 属性：</h3>
+    <p>任何一个 “函数” 都存在着一个 prototype属性；这个属性是一个对象， 称之为：原型对象。</p>
+
+</body>
+<script type="text/javascript">
+    function Person() {
+        //   父类
+        Person.prototype.name = "mr.zz"
+        Person.prototype.getName = function () {
+            alert(this.name)
+        } // 添加getName方法
+    }
+    var guy = new Person();
+    guy.getName();
+  /*
+   关于原型的几个概念
+    1.prototype属性
+    2._proto_ 属性
+    3.constructor属性  查看对象的构造函数
+
+    他们的关系是：
+      function /
+          |- prototype
+             |-_proto_
+             |-constructor
+            
+             
+    关于prototype 属性：
+    任何一个 “函数” 都存在着一个 prototype属性；这个属性是一个对象， 称之为：原型对象。
+    这个对象里有自函数-- 创建就生成的两个属性，一个是constructor 和_proto_ ；
+     prototype{
+         _proto_:
+         constructor:
+     }
+     也可以给原型对象添加方法和属性：
+     function Person (){
+         //   父类
+      Person.prototype.name="mr.zz";
+      Person.prototype.getName = function(){
+          alert(this.name)
+      } // 添加getName方法
+     }
+     或者
+     function Person (){
+         this.name = "zhz",
+         this.method = function(){
+             alert(this.name)
+         }
+     }
+     或者
+     function Person (){
+
+     }
+     Person.prototype = {
+         name:"zhz",
+         method:function(){
+             alert(this.name)
+         }
+     }
+
+     Person /
+        |-prototype
+           |-constructor
+           |- _proto_
+           |-name
+           |-getName:function(){
+               ...
+           }
+
+    作用： 首先实例化一个 person
+    var guy = new Person();
+    guy.getName();
+      
+    guy 就继承了person的属性和方法
+    咋一看，跟构造函数和工厂模式差不多，他们都生成拥有相同属性和方法的对象。但是原型对象生成的对象有一个很重要的特点就是他们共用一个原型对象的属性和方法。
+
+
+    3. constructor属性
+    constructor属性指向的是创建此对象的构造函数的引用，这个属性存在prototype原型对象中，构造函数的对象实例也可以通过constructor属性来访问构造它的那个函数。
+    var test=new Array();
+
+        if (test.constructor==Array)
+        {
+        document.write("This is an Array");
+        }
+        if (test.constructor==Boolean)
+        {
+        document.write("This is a Boolean");
+        }
+        if (test.constructor==Date)
+        {
+        document.write("This is a Date");
+        }
+        if (test.constructor==String)
+        {
+        document.write("This is a String");
+        }
+
+
+    二： 原型继承的实现   Object.create()
+    //父类
+    function Person(){};
+    Person.prototype.method = function (){
+        return 'hello';
+    }
+
+    //子类
+    function Child(){};
+    Child.prototype = Object.create(Person.prototype);
+    Child.prototype.constructor = Child;
+    Child.prototype.say = function (){
+        return 'hello world';
+    }
+
+    var c1 = new Child();
+    c1.method();    //'hello'
+    c1.say();       //'hello world'
+    //由此可见子类继承了父类的方法，也拥有自己的方法
+
+
+链接：https://www.jianshu.com/p/df87c01672b4
+
+  */
+    
+</script>
+</html>
