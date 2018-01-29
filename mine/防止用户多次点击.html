@@ -16,12 +16,12 @@
   </body>
   <script src="jquery-3.2.1.min.js" charset="utf-8"></script>
   <script type="text/javascript">
-    $("btn3").on('click',function(){
+    $(".btn3").on('click',function(){
       console.log("按钮禁用");
       $(this).attr("disabled",true);
       setTimeout(function(){
         console.log("按钮重启");
-        $("btn3").attr("disabled",false);
+        $(".btn3").removeAttr("disabled");
       },3000)
 
     })
