@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>canvas 生成img 图片</title>
+  </head>
+  <body>
+    <canvas width="1000" height="600" id="myCanvas" stylle="width:1000px;height:600px;"></canvas>
+    <button id="saveImageBtn">生成图片</button>
+  </body>
+  <script type="text/javascript">
+  // 生成图片的方法
+  function saveImageInfo() {
+      var mycanvas = document.getElementById("thecanvas");
+      var image = mycanvas.toDataURL("image/png");
+      var w = window.open('about:blank', 'image from canvas');
+      w.document.write("<img src='" + image + "' alt='from canvas'/>");
+    }  
+
+    function bindButtonEvent(element, type, handler) {
+        if (element.addEventListener) {
+          element.addEventListener(type, handler, false);
+        } else {
+          element.attachEvent('on' + type, handler);
+        }
+      }  
+
+window.onload = function(){
+  
+  var canvas = document.getElementById('myCanvas');
+  var ctx = canvas.getContext('2d');
+  var imagUrls = ["http://imgs.aixifan.com/content/2017_11_04/1512379230.png?imageView2/1/w/320/h/180", "http://imgs.aixifan.com/content/2017_11_04/1512379230.png?imageView2/1/w/320/h/180", "http://imgs.aixifan.com/content/2017_11_04/1512379230.png?imageView2/1/w/320/h/180"];
+  var n = 0;
+
+  loadImg();
+  var y = 0;
+  var x = 100;
+  function loadImg() {
+    if (n < imagUrls.length) {
+      var img = new Image();
+      img.src = imagUrls[n];
+      img.onload = onloaded;
+    }
+    else {
+      console.log("图片加载完了");
+      convertCanvasToImage(canvas)
+    }
+  }
+
+  function convertCanvasToImage(canvas) {
+    var image = new Image();
+    console.log(canvas.toDataURL());
+    image.setAttribute("crossOrigin", 'anonymous')
+    image.src = canvas.toDataURL("image/png");
+
+    // canvas-drawImage.html:34 Uncaught DOMException: Failed to execute 'toDataURL' on 'HTMLCanvasElement': Tainted canvases may not be exported.
+    // 这里会报这样一份错误，是因为使用了外域的图片资源，解决方法是：搭建本地服务器
+
+    return image;
+  }
+  function onloaded(e) {
+    x = x + 100;
+    // y = y+100;
+    console.log(x, y);
+    // 这里的 xy  是下面的图的排列
+    var img = e.target;
+    console.log(e, img);
+    ctx.drawImage(img, 0, y);
+    y = y + 200;
+    n++;
+    loadImg();
+  }
+
+// 保存图片
+  var saveButton = document.getElementById("saveImageBtn");
+  bindButtonEvent(saveButton, "click", saveImageInfo);
+}
+</script>
+</html>

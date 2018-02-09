@@ -5,17 +5,23 @@
     <title></title>
   </head>
   <body>
-    <button type="button"  name="button">发送</button>
+
+    <button type="button"  name="button" class="btn3">发送</button>
     <span id="dd">10</span>秒
+
+
+    <p>解除on click  绑定事件的方法 off</p>
+    <button class="btn1">按钮1</button>
+    <button class="btn2">解除按钮1的事件</button>
   </body>
   <script src="jquery-3.2.1.min.js" charset="utf-8"></script>
   <script type="text/javascript">
-    $("button").on('click',function(){
+    $(".btn3").on('click',function(){
       console.log("按钮禁用");
       $(this).attr("disabled",true);
       setTimeout(function(){
         console.log("按钮重启");
-        $("button").attr("disabled",false);
+        $(".btn3").removeAttr("disabled");
       },3000)
 
     })
@@ -28,5 +34,14 @@
       s.innerHTML = s.innerHTML * 1 - 1;
   }
   window.setInterval("run();", 1000);
+
+  $(".btn1").on('click',function(){
+    alert("绑定事件")
+  });
+
+  $(".btn2").on('click',function(){
+    $(".btn1").off("click");
+    alert("已经解除了按钮1的点击事件");
+  })
   </script>
 </html>

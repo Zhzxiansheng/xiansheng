@@ -3,8 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .div{
+        width: 610px;
+        background: red;
+        height: 100px;
+      }
+      .p1,.p2{
+        display: inline-block;
+        width: 300px;
+        height: 100px;
+        background: green;
+      }
+    </style>
   </head>
   <body>
+    <!-- 两个inline-block的块会出现缝隙：出现原因是因为在写HTML文件的时候出现换行；解决方法：给父元素加font-size:0; -->
+    <div class="div">
+      <p class="p1"></p>
+      <p class="p2"></p>
+    </div>
     <p></p>
     <p></p>
     <p></p>
@@ -122,6 +144,18 @@
     }
     console.log(p);
     console.log(singObj);
+
+    //删除对象的属性
+   var obj = {};
+   obj.name= "zhz";
+   obj.sex = "man";
+  //  for(var key in obj){
+      // delete obj[key]
+    
+  //  }
+   delete obj["name"]
+  // delete obj[name];
+   console.log(obj);
 
   </script>
 </html>

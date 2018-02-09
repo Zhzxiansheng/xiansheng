@@ -3,9 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title>map</title>
-  </head>
-  <body>
+    <style media="screen">
+        .data_custom{display: inline-block;position: relative;}
+        .data_custom:hover{color:transparent;}
+        .data_custom:hover::after{content: attr(data-hover-response);color: red;position: absolute;left: 0;}
+        button{background-color: red}
+        button:hover{opacity: .8;}
+        .div{
+            height: 500px;
+            background: blue;
+        }
+        .p{
+            width: 50vh;
+            height: 50vh;
+            background: orange;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="div">vh
 
+        <p class="p">vh ：相对于视口的高度。视口被均分为100单位的vh</p>
+      </div>
+      <a href="#" class="data_custom" data-hover-response="你碰我了我内容就要改变！">鼠标碰我一下试试！</a>
   </body>
   <script type="text/javascript">
     var arr = [2,4,6,8,10]

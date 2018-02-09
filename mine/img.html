@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>出现的问题，当你用 innerHTML = image  的时候，页面显示的是一个图片对象。[object HTMLImageElement]</p>
+    <p>为了解决这个问题，有两种方式， 1.将innerHTML 改为appendChild 2. innerHtm = image.outerHTML  </p>
+    <p>出现原因：给 innerHTML 赋的值是一个 String，而 imgs[this.R] 是一个 Node Object，因此它会自动转成 string（即 [object HTMLImageElement]）。但是转成的是 [object HTMLImageElement]
+    而不是类似
+    img src=""，前者，innerHTML 会把它当成普通的 Text String。</p>
+</body>
+<script>
+    var image = new Image()
+    image.src = "http://imgs.aixifan.com/content/2017_11_12/1513049118.gif?imageView2/1/w/320/h/180"
+    console.log(image)
+    var body = document.querySelector("body");
+    console.log(body)
+    // body.innerHTML= image.outerHTML;
+    body.appendChild(image)
+</script>
+</html>
