@@ -39,6 +39,22 @@
         width:calc(33.3333% - (10px + 5px) * 2 - 15px )
 
         }
+        .con{
+          overflow: hidden;
+        }
+        .con>div{
+          height: 100px;
+          float: left;
+        }
+        .left,.right{
+          width: 100px;
+          background: red;
+        }
+        .center{
+          width: calc(100% - 200px);
+          overflow: hidden;
+          background: blue;
+        }
     </style>
   </head>
   <body>
@@ -53,5 +69,10 @@
       <li class="li"></li>
       <li class="li"></li>
     </ul>
+    <div class="con">
+      <div class="left"></div>
+      <div class="center"></div>
+      <div class="right"></div>
+    </div>
   </body>
 </html>

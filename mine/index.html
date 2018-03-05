@@ -3,9 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style type="text/css">
+    .div{
+      font-size: 20px;
+    }
+    .p1{
+      height: 1em;
+      background: red;
+      font-size: 25px;
+    }
+    .p2{
+      background: blue;
+      height: 1em;
+      font-size: 18px;
+    }
+    </style>
   </head>
   <body>
-    <div class="div"></div>
+    <div class="div">
+      <div class="p1">
+      
+      <p class="p2">em 的参照倍数对象为其自身字体大小，font-size;如果没有向上继承；</p>        
+      </div>
+    </div>
   </body>
   <script src="jquery-3.2.1.min.js"></script>
   <script type="text/javascript">
@@ -14,6 +34,9 @@
       
     }
     a('z',10);
+    
+    console.log(c);
+    var c= 2;
     
   </script>
 </html>
