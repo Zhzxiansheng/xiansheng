@@ -42,7 +42,7 @@ console.log("----------------------------------------------");
 // 2构造继承  核心： 使用父类的构造函数来增强子类实例。（没有用到原型k）
 function Dog(name){
   Animal.call(this); // 用 call 指向Animal
-  this.name = name || "Tom";
+  // this.name = name || "Tom";
 }
 var dog = new Dog();
 // dog.name = '狗';
