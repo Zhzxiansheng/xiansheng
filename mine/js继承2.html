@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    //构造一个父类
+    function Animal(name) {
+        this.name = name || "Animal"
+    }
+    Animal.prototype.say = function (info) {
+        console.log(this.name + " 说了: " + info)
+    }
+    var animal = new Animal();
+    animal.say("你好")
+    //1.原型链继承  核心： 子类的原型链上new了一个父类  子类.prototype = new 父类()
+    function Cat() {
+
+    }
+    Cat.prototype = new Animal(); 
+    var cat = new Cat();
+    cat.name = "猫"
+    cat.say("我要吃鱼"); // 猫说了：我要吃鱼
+
+    // 2构造继承  改变this的指向，指向父类
+    function Dog(){
+        Animal.call(this);
+    }
+    var dog = new Dog();
+    // dog.say("我要吃骨头"); 报错
+    console.log(dog instanceof Animal); // false  构造函数继承不属于父类，不能拥有父类的原型链上的方法
+
+    // 3.实例继承  在子类的构造函数里面，new一个父类，然后return出来
+    function Tiger(name){
+        var animal = new Animal();
+        this.name = name || "老虎";
+        return animal;
+    }
+    var tiger = new Tiger();
+    tiger.name = "tiger";
+    tiger.say("我在动物园");
+    // 4。拷贝继承  能用父类的原型链上的方法， 不能用父类的内部属性；比如 父类的name 。 如果自己不声明的话， 就没有
+    function Elemenphon (name){
+        var animal = new Animal();
+        for(var p in animal){
+            Elemenphon.prototype[p] = animal[p];
+        }
+        this.name = name || "大象";
+    };
+    var elemenphon = new Elemenphon();
+    elemenphon.say("我是大象");
+    console.log(elemenphon);
+
+    // 5.组合继承
+    function Eyu(name){
+       Animal.call(this);  // 构造继承
+    }
+    Eyu.prototype = new Animal(); // 原型链继承
+
+    var eyu = new Eyu();
+    eyu.name = "鳄鱼";
+    eyu.say("我是鳄鱼");
+  </script>
+</body>
+</html>

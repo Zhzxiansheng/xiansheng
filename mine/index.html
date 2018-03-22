@@ -3,6 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+<<<<<<< HEAD
+    <style>
+    p{
+      width: 100px;
+      height: 20px;
+      background: cyan;
+=======
     <style type="text/css">
     .div{
       font-size: 20px;
@@ -16,15 +23,23 @@
       background: blue;
       height: 1em;
       font-size: 18px;
+>>>>>>> 92511f73966f63b709f7ebb60e5d7c6093723f38
     }
     </style>
   </head>
   <body>
     <div class="div">
+<<<<<<< HEAD
+      <p class="now">1</p>
+      <p class="now">2</p>
+      <p class="now">3</p>
+      <p class="now">4</p>
+=======
       <div class="p1">
       
       <p class="p2">em 的参照倍数对象为其自身字体大小，font-size;如果没有向上继承；</p>        
       </div>
+>>>>>>> 92511f73966f63b709f7ebb60e5d7c6093723f38
     </div>
   </body>
   <script src="jquery-3.2.1.min.js"></script>
@@ -34,9 +49,80 @@
       
     }
     a('z',10);
-    
-    console.log(c);
-    var c= 2;
-    
+    // 继承 5 1：原型链继承  2.构造继承  3.实例继承  4. 拷贝继承  5.组合继承
+    //父类
+    function Animal(name,age){
+      this.name = name || "动物";
+      this.age = age;
+      this.sleep = function (params) {
+        console.log(this.name+": 正在睡觉");
+      }
+    }
+    Animal.prototype.say = function (msg) {
+      console.log(this.name+ " 说:" + msg);
+    }
+
+    var animal = new Animal();
+    animal.name = "1";
+    animal.sleep();
+
+    // 1原型链  能继承一切东西
+
+    function Cat(){
+
+    }
+    Cat.prototype = new Animal();
+    var cat = new Cat();
+    console.log("原型链")
+    console.log(cat)
+    // cat.name = "猫";
+    // cat.sleep();
+    // cat.say("我说猫");
+
+    //2 构造继承  不能得到父类的prototype上的东西； dog instanceof Animal--  false
+    function Dog(){
+      Animal.call(this);
+    }
+
+    var dog = new Dog();
+    console.log("构造继承");
+    console.log(dog);
+    // dog.say("我是狗") // 报错
+ 
+    //3 实例继承   也可以继承父类的所有
+    function Eyu(){
+      var animal = new Animal();
+      return animal;
+    }
+  var eyu = new Eyu();
+  console.log("实例继承");
+  console.log(eyu);
+  // eyu.say("我是鳄鱼");
+
+  // 4 拷贝继承
+
+  function Yanzi(){
+    var animal = new Animal();
+    for(var i in animal){
+      Yanzi.prototype[i] = animal[i];
+    }
+  }
+
+  console.log("拷贝继承");
+  var yanzi = new Yanzi();
+  console.log(yanzi);
+  // yanzi.name = "燕子";
+  // yanzi.sleep();
+  // yanzi.say("傻子");
+
+  // 5组合继承
+  function Banma(){
+    Animal.call(this);
+  }
+  Banma.prototype = new Animal();
+  var banma = new Banma();
+  console.log("组合继承")
+  console.log(banma);
+
   </script>
 </html>

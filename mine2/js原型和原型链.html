@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" conent="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js原型和原型链</title>
+</head>
+<body>
+    
+</body>
+<script type="text/javascript">
+    //“万物皆对象” 但是js 对象还分为 1.函数对象 2.普通对象 
+
+    function Person(name,age){
+        this.name = name  || "张浩壮";
+        this.age = age || 11;
+        // console.log(this); // this 指向的是构造函数本身；
+    }
+    Person.prototype.age = 18;
+    
+    var person = new Person();
+   
+    console.log(person);
+    console.log(person.__proto__); // 是person 的 构造函数的 prototype
+    console.log(Person.__proto__); // 因为Person是函数对象； Person.__proto__ ==Person的构造函数.prototype;所以这里是function.protype
+    console.log(Person.prototype);
+    console.log(Person.prototype === person.__proto__);
+
+    console.log(Object.prototype.__proto__); // null 处于原型链的最顶端
+    
+    console.log(Person.prototype.__proto__ )
+
+    // 普通对象
+    var obj = new Object();
+    // obj.prototype.name = "张";
+    console.log(obj);
+   
+    console.log(obj.prototype); // undefined
+    console.log(obj.__proto__);// object.__proto__
+    console.log(obj.constructor); // object
+    console.log(Person.constructor); // function 父类构造函数
+
+    // 结论：一个对象的实例，等于这个对象的prototype; 然后函数对象的实例有prototype;普通对象没有
+
+    // 牵扯到Object.create() 和 new 的区别
+    // new关键字是 创建一个实例对象；和父类对象一样 
+    // Object.create() 括号内必须传值；但不能是undefined;相当于创建了一个对象，然后把括号内里面的内容放在了这个空对象的__proto__属性上
+    var object = new Object();
+    // object.name="张";
+    console.log(object);
+    var object2 = Object.create({}); // 括号内必须有东西，这种写法代表了创建一个空对象
+    // object2.name = "张2";
+    console.log(object2);
+    console.log(object2=== object);
+    var object3 = Object.create(object);
+    console.log(object3);
+    console.log(object3.__proto__);
+    
+
+
+    var obj4 = {
+        name:"张4"
+    }
+
+    console.log(obj4);
+    console.log(obj4.hasOwnProperty("name")); // 必须传入属性字符串  true
+    console.log(obj4.hasOwnProperty("age")); // false
+
+    function Animal (){
+
+    }
+    var animal = new Animal();
+    console.log(Animal.prototype.isPrototypeOf(animal));
+
+</script>
+</html>
