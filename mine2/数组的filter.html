@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+</head>
+<body>
+    <article class="major">
+        <div class="major_left"></div>
+        <div class="major_right"></div>
+        <footer class="foot"></footer>
+    </article>
+</body>
+<script type="text/javascript">
+    // 需求：只保留下面数组中年龄大于等于25 的人  forEach   map   filter
+
+    // map 和 forEach  的参数是一样的， 但是map 可以有返回值return XX ；forEach 没有返回值
+    //parseInt  和 parseFloat 的区别： parseInt 能够把小数类型的数值转为整数类型；并且能够把字符串类型的数字转为数值类型
+    // parseFloat 能够把字符串类型转为数值类型，会保留小数点后一位； 并且只解析数字 parseFloat(123acd) 123
+
+    var data = [
+            { "id": "1", "name": "小刘", "age": "25" },
+            { "id": "2", "name": "小华", "age": "24" },
+            { "id": "3", "name": "小佳", "age": "27" },
+            { "id": "4", "name": "小王", "age": "24" },
+            { "id": "5", "name": "小何", "age": "22" },
+        ];
+
+    // forEach
+    var newData= [];
+    var res = data.forEach(function (item, index, input) {
+            if (parseInt(item["age"]) >= 25){
+                newData.push(item);
+            }
+        })
+    console.log(newData);
+
+
+    // map
+    var newData2 = [];
+    data.map(function(item,index,input){
+        if (parseInt(item["age"]) >= 25) {
+            newData2.push(item);
+        }
+        return newData2;
+    });
+    console.log(newData2);
+
+
+    //filter
+    var new_data = data.filter(function (element, index) {
+            return element['age'] >= 25;
+        });
+        console.log(new_data);
+
+    // for循环
+    var newData3 = [];
+    for(let i =0;i<data.length; i++){
+        if(data[i]["age"]>=25){
+            newData3.push(data[i])
+        }
+    }
+    console.log(newData3);
+</script>
+</html>
