@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>form表单</title>
+    <style type="text/css">
+        #tip{
+            position: fixed;
+            bottom: 4rem;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 6px 20px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, .6);
+            color: #ffffff;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="tip"> 提示信息 </div>
+    <!-- action="http://www.acfun.cn/" target="_black" method="POST" -->
+    <form  id="form" >
+        <div>
+            <label for="username">请输入用户：</label>
+            <input type="text" name="username" required="required" placeholder="请输入用户名" id="username">
+        </div>
+        <div>
+            <label for="mobile">请输入电话：</label>
+            <input type="text" name="mobile" required="required" placeholder="请输入电话：" id="mobile">
+        </div>
+        <div>
+            <label for="password">请输入密码：</label>
+            <input type="password" name="password" required="required" placeholder="密码" id="password">
+        </div>
+        <input type="submit" value="注册" class="btn">
+    </form>
+</body>
+<script src="../mine/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    function showTip(content){
+        $("#tip").show().html(content);
+        setTimeout(function(){
+            $("#tip").hide();
+        },3000);
+    }
+
+
+    form = $("#form");
+    form.data().submit = function (){
+        form.data() = $.post('http://www.acfun.cn/',{
+            username:form.data().username,
+            mobile: form.data().mobile,
+        },function(result){
+            console.log(result);
+            console.log(form.data())
+        })
+    }
+
+    // 方式二
+    // $(".btn").on('click',function(){
+    //     console.log($("#form").submit())
+    //     // $("#form").submit();
+    // })
+
+    // 方式三
+
+    // $(".btn").on('click', function () {
+    //     var form = document.querySelector("#form");
+    //     form.submit();
+    // })
+
+    // 方式四 这是 jquery 的submit() 事件
+    // console.log($("#form").submit())
+    // $("#form").submit(function(e){
+    //     // 阻止默认事件，或者return false 都会阻止掉提交
+    //     showTip("提交信息");
+    //     console.log(e);
+    //     // if (1){
+
+    //     // }else{
+    //     //     e.preventDefault();
+    //     //     return false; 
+    //     // }
+    // }); 
+
+
+</script>
+</html>
