@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>form表单验证</title>
+</head>
+<body>
+    <form id="form-reg" class="form">
+        <div class="area">
+            <input id="ipt-mobile-reg" name="mobile" spellcheck="false" type="text" data-name="手机号码" data-direction="right"
+                autocomplete="off" class="mobile l error" placeholder="请输入手机号码" required="required">
+            <span class="clearfix"></span>
+        </div>
+        <div class="area">
+            <input id="ipt-username-reg" name="name" spellcheck="false" type="text" data-name="昵称" data-direction="right"
+                data-length="4,16" class="regname name l" placeholder="请输入昵称" required="required">
+            <span class="clearfix"></span>
+        </div>
+        <div class="area">
+            <input id="ipt-pwd-reg" name="password" type="password" data-name="密码" data-length="6,32" data-direction="right"
+                placeholder="请输入密码" class="password l" required="required">
+            <span class="clearfix"></span>
+        </div>
+        <div class="area">
+            <input id="ipt-repwd-reg" name="password2" type="password" data-name="确认密码" data-length="6,32" data-direction="right"
+                placeholder="确认密码" class="re-password l" required="required">
+            <span class="clearfix"></span>
+        </div>
+        <div class="area">
+            <input id="ipt-mobile-code" name="code" type="text" data-name="手机验证码" data-length="6,6" data-direction="right" placeholder="手机验证码"
+                class="mcode l" required="required">
+            <input id="send-mobile-code" type="button" value="发送验证码" disabled="disabled" class="dis">
+            <span class="clearfix"></span>
+        </div>
+        <div class="area area-agree">
+            <input id="ipt-agree-reg" type="checkbox" checked="checked" class="l agree">
+            <label for="ipt-agree-reg" class="agree-b">我已经认真阅读并同意AcFun的
+                <a href="/info/#page=agreement" target="_blank">《使用协议》</a>。</label>
+            <a href="/login/" class="back-login">返回登录</a>
+            <span class="clearfix"></span>
+        </div>
+        <div class="area-tool">
+            <a class="do login-btn primary">注册</a>
+        </div>
+    </form>
+</body>
+<script src="../mine/jquery-3.2.1.min.js"></script>
+<script>
+    (function () {
+            $.fn.popupCode = function (callback) {
+                var bananaLeft, bananaTop;
+                bananaLeft = ($$(window).width() - 316) / 2;
+                bananaTop = ($$(window).height() - 300) / 2;
+                return $(document).unfold({
+                    src: '../html/win-verificationcode',
+                    id: 'win-verifycode',
+                    title: '验证码',
+                    width: '316',
+                    height: 'auto',
+                    top: bananaTop,
+                    left: bananaLeft,
+                    curtain: true,
+                    callback: function () {
+                        return $.fn.popupCodeConfirm(function (captcha, closepopup) {
+                            return typeof callback === "function" ? callback(captcha, closepopup) : void 0;
+                        });
+                    }
+                });
+            };
+
+            $(function () {
+                return $.require('ready', function () {
+                    var form, isQuesOn, pathUrl, sendOff, sendOn;
+                    pathUrl = '';
+                    isQuesOn = false;
+                    $("#inp").val($.cookie("ac_sid"));
+                    form = $$('#form-reg');
+                    sendOn = function () {
+                        var $smc;
+                        $smc = $("#send-mobile-code");
+                        return $smc.removeClass("dis").removeAttr("disabled").off('click').on('click', function () {
+                            return $.fn.popupCode(function (captcha, callback) {
+                                return $.get(pathUrl + "/mobileValidate.aspx?mobile=" + form.data().mobile + "&captcha=" + captcha).done(function (d) {
+                                    var c, st;
+                                    if (d.success) {
+                                        sendOff();
+                                        $.info("success::" + d.info);
+                                        $smc.val("重新发送( 60 )");
+                                        c = 60;
+                                        st = setInterval(function () {
+                                            $smc.val("重新发送( " + --c + " )");
+                                            if (c < 0) {
+                                                clearInterval(st);
+                                                $smc.val("发送验证码");
+                                                return sendOn();
+                                            }
+                                        }, 1000);
+                                        return typeof callback === "function" ? callback() : void 0;
+                                    } else {
+                                        return typeof callback === "function" ? callback(d.info) : void 0;
+                                    }
+                                }).fail(function (d) {
+                                    return $.info("error::网络错误");
+                                });
+                            });
+                        });
+                    };
+                    sendOff = function () {
+                        var $smc;
+                        $smc = $("#send-mobile-code");
+                        return $smc.off("click").addClass("dis").attr("disabled", "disabled");
+                    };
+                    (function () {
+                        var jump;
+                        if ($.query().mini === "1") {
+                            jump = $$('.after-reg').find('a');
+                            return jump.html('稍后自动返回来源页面').attr('href', $.query().href);
+                        }
+                    })();
+                    form.data().submit = function () {
+
+                        /*$ "#win-checkmail-reg"
+                          .find ".block-title"
+                          .hide()
+                        $ "#win-checkmail-reg"
+                          .find ".mainer"
+                          .html "<div id='reg_status'><img class='headImg' src='http://static.acfun.mm111.net/dotnet/20130418/umeditor/dialogs/emotion/images/ac/26.gif ' /><p class='content'>注册验证邮件发送中,稍耐心等待	</p><div class='loading'></div></div>"
+                         */
+                        var ref;
+                        if ((ref = form.data().port) != null) {
+                            ref.abort();
+                        }
+                        return form.data().port = $.post(pathUrl + '/mobileRegister.aspx', {
+                            username: form.data("username"),
+                            mobile: form.data().mobile,
+                            code: form.data().mcode,
+                            username: form.data().regname,
+                            password: form.data().password,
+                            password2: form.data('re-password')
+                        }, "json").done(function (data) {
+                            var area, text;
+                            $('#curtain').click();
+                            if (data.success) {
+                                $.info(text = 'success::' + data.result);
+
+                                /*setTimeout ->
+                                  location.href = '/'
+                                , 4e3
+                                 */
+                                form.addClass('hidden');
+                                area = $('#area-reg .area-reg');
+                                area.find('.after-reg').removeClass('hidden').find(".mobile").text(form.data().mobile + ",");
+                                area.transition({
+                                    translate: '0,90'
+                                }, 1e3);
+                                return setTimeout(function () {
+                                    if ($.query().mini === "1") {
+                                        return window.location.href = $.query().href + '#answer=1';
+                                    } else {
+                                        return window.location.href = '/';
+                                    }
+                                }, 3000);
+                            } else {
+                                $.info(text = 'warning::' + (data.result || '操作失败。'));
+                                return $$('#ipt-mobile-code').val('');
+                            }
+                        }).fail(function () {
+                            var text;
+                            $.info(text = 'error::因网络原因注册失败，请稍后重试。');
+                            form.info(text);
+                            form.find('div.area img.captcha-pic').click();
+                            return $$('ipt-captcha-reg').val('');
+                        });
+                    };
+                    if (!system.regable) {
+                        form.find('.area-code').removeClass('hidden');
+                        $$('#ipt-code-reg').attr({
+                            disabled: false
+                        });
+                    }
+                    return form.setup({
+                        finish: function () {
+                            $$('#ipt-mobile-reg').focus();
+                            return $$('#ipt-mobile-reg, #ipt-username-reg').on('blur', function () {
+                                var ipt, type;
+                                ipt = $(this);
+                                if (!ipt.hasClass('error')) {
+                                    type = ipt.data().name === '手机号码' ? 'mobile' : 'username';
+                                    if (type === 'mobile') {
+                                        return $.get(pathUrl + '/mobileUnique.aspx?' + type + '=' + ipt.val()).done(function (d) {
+                                            if (!d) {
+                                                ipt.addClass('error').data({
+                                                    exist: true
+                                                }).info({
+                                                    text: 'warning::手机号码已被注册。',
+                                                    direction: 'right'
+                                                });
+                                                return ipt.data({
+                                                    exist: true
+                                                });
+                                            } else {
+                                                sendOn();
+                                                return ipt.data({
+                                                    exist: false
+                                                });
+                                            }
+                                        }).fail(function () {
+                                            return ipt.data({
+                                                exist: false
+                                            });
+                                        });
+                                    } else {
+                                        return $.get(pathUrl + '/username_unique.aspx?' + type + '=' + encodeURIComponent(ipt.val())).done(function (d) {
+                                            if (d.status === 200) {
+                                                return ipt.data({
+                                                    exist: false
+                                                });
+                                            } else if (d.status === 400) {
+                                                ipt.addClass('error').data({
+                                                    exist: true
+                                                }).info({
+                                                    text: 'warning::' + d.info,
+                                                    direction: 'right'
+                                                });
+                                                return ipt.data({
+                                                    exist: true
+                                                });
+                                            }
+                                        }).fail(function () {
+                                            return ipt.data({
+                                                exist: false
+                                            });
+                                        });
+                                    }
+                                }
+                            });
+                        },
+                        callback: function () {
+                            if ($$('#ipt-mobile-code').data().exist) {
+                                $$('#ipt-mobile-code').info({
+                                    text: 'warning::手机验证码错误。',
+                                    direction: 'right'
+                                });
+                                return;
+                            }
+                            if ($$('#ipt-username-reg').data().exist) {
+                                $$('#ipt-username-reg').info({
+                                    text: 'warning::账号已被注册。',
+                                    direction: 'right'
+                                });
+                                return;
+                            }
+                            if (!$$('#ipt-agree-reg')[0].checked) {
+                                $$('#ipt-agree-reg').info({
+                                    text: 'warning::注册账号需同意《使用协议》。',
+                                    direction: 'top'
+                                });
+                                return;
+                            }
+                            return $$('#form-reg').data().submit();
+
+                        }
+                    });
+                });
+            });
+
+        }).call(this);
+
+</script>
+</html>
