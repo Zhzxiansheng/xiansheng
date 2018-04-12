@@ -9,7 +9,7 @@
     <button type="button"  name="button" class="btn3">发送</button>
     <span id="dd">10</span>秒
 
-
+    <input type="text" class="input">
     <p>解除on click  绑定事件的方法 off</p>
     <button class="btn1">按钮1</button>
     <button class="btn2">解除按钮1的事件</button>
@@ -18,9 +18,13 @@
   <script type="text/javascript">
     $(".btn3").on('click',function(){
       console.log("按钮禁用");
+      $(".input").attr('value',$('.input').val())
+      
+      console.log($("html").html());
       $(this).attr("disabled",true);
       setTimeout(function(){
         console.log("按钮重启");
+        
         $(".btn3").removeAttr("disabled");
       },3000)
 

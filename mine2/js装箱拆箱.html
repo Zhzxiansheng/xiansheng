@@ -5,11 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        .ul{
+            list-style: none;
+        }
+    </style>
 </head>
 <body>
-    
+    <div id="parent">
+       <ul class="ul ul1">
+           <li></li>
+       </ul>
+       <ul class="ul ul2">
+        <li>第二种添加结构的方法</li>
+       </ul>
+    </div>
 </body>
 <script type="text/javascript">
+    var json = [
+        {
+            key:1,
+            value:"第一行数据"
+        },
+        {
+            key: 2,
+            value: "第二行数据"
+        },
+        {
+            key: 3,
+            value: "第三行数据"
+        },
+        {
+            key: 4,
+            value: "第四行数据"
+        }
+    ]
+
+    var liStr = '';
+    var ul = document.querySelector(".ul1");
+    // json.forEach(function(item,index){
+    //     liStr += '<li>'+ item.key +'--'+ item.value +'</li>';
+       
+    // });
+    for (let item of json){
+        liStr += '<li>' + item.key + '--' + item.value + '</li>';
+    }
+     ul.innerHTML = liStr;
+    
+
+    var ul2 = document.querySelector('.ul2');
+    for (let i of json){
+        var node = document.createElement("LI");
+        node.innerHTML = i.key + '--' + i.value;
+        ul2.appendChild(node);
+
+    }
+
     // 装箱： 把基本数据类型转为对应的“引用类型”的操作
     // 1.装箱，就是用这个值类构造一个对应的包装对象。如：
     var a = 10, b = "javascript", c = true;

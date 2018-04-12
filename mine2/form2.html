@@ -47,17 +47,79 @@
         },3000);
     }
 
+    // EventUtil-- 跨浏览器的事件对象
+    var EventUtil = {
+            addHandler: function (element, type, handler) {
+                if (element.addEventListener) {
+                    element.addEventListener(type, handler, false);
+                } else if (element.attachEvent) {
+                    element.attachEvent("on" + type, handler);
+                } else {
+                    element["on" + type] = handler;
+                }
+            },
+            removeHandler: function (element, type, handler) {
+                if (element.removeEventListener) {
+                    element.removeEventListener(type, handler, false);
+                } else if (element.detachEvent) {
+                    element.detachEvent("on" + type, handler);
+                } else {
+                    element["on" + type] = null;
+                }
+            },
 
-    form = $("#form");
-    form.data().submit = function (){
-        form.data() = $.post('http://www.acfun.cn/',{
-            username:form.data().username,
-            mobile: form.data().mobile,
-        },function(result){
-            console.log(result);
-            console.log(form.data())
-        })
-    }
+            getEvent: function (event) {
+                return event ? event : window.event;
+            },
+            getTarget: function (event) {
+                return event.target || event.srcElement;
+            },
+            preventDefault: function (event) {
+                if (event.preventDefault) {
+                    event.preventDefault();
+                } else {
+                    event.returnValue = false;
+                }
+            },
+            stopPropagation: function (event) {
+                if (event.stopPropagation) {
+                    event.stopPropagation();
+                } else {
+                    event.cancelBubbles = true;
+                }
+            },
+            getRelatedTarget: function (event) {
+                if (event.relatedTarger) {
+                    return event.relatedTarget;
+                } else if (event.toElement) {
+                    return event.toElement;
+                } else if (event.fromElement) {
+                    return event.fromElement;
+                } else { return null; }
+
+            }
+
+        }
+
+    // form = $("#form");
+            //下面代码会阻止表单提交
+            var form = document.getElementById('form');
+            EventUtil.addHandler(form, 'submit', function (event) {
+                            //取得事件对象
+                            var event = EventUtil.getEvent(event);
+                            //阻止默认事件
+                            EventUtil.preventDefault();
+                        })
+
+    // form.data().submit = function (){
+    //     form.data() = $.post('http://www.acfun.cn/',{
+    //         username:form.data().username,
+    //         mobile: form.data().mobile,
+    //     },function(result){
+    //         console.log(result);
+    //         console.log(form.data())
+    //     })
+    // }
 
     // 方式二
     // $(".btn").on('click',function(){
@@ -86,6 +148,7 @@
     //     // }
     // }); 
 
+    
 
 </script>
 </html>
