@@ -26,15 +26,27 @@
 
 </body>
 <script type="text/javascript">
-    function Person() {
+    // 构造函数（函数对象） , 原型对象 、实例、 
+
+    function Person(age) {
+        this.age = age || 18;
         //   父类
         Person.prototype.name = "mr.zz"
         Person.prototype.getName = function () {
-            alert(this.name)
+            // alert(this.name)
         } // 添加getName方法
     }
+
+    
     var guy = new Person();
+    console.log(guy);
+    console.log(Person.prototype == guy.__proto__);
+    console.log(Person.__proto__ == Function.prototype); // funtion.prototype;
+    console.log(Person.constructor);
     guy.getName();
+    var c = new Object();//{}
+    console.log(c.constructor);//
+    console.log(c.__proto__);// 
   /*
    关于原型的几个概念
     1.prototype属性
@@ -141,7 +153,7 @@
     //由此可见子类继承了父类的方法，也拥有自己的方法
 
 
-链接：https://www.jianshu.com/p/df87c01672b4
+
 
   */
     

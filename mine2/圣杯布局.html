@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,userable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>圣杯布局</title>
+    <style type="text/css">
+        /* 第一种实现方式flex */
+        .container{
+            display: flex;
+            height: 100px;
+            justify-content: center;
+        }
+        .left{
+            height: 100px;
+            width: 100px;
+            background: red;
+        }
+        .center{
+            height: 100px;
+            flex: 1;
+            background: cyan;
+        }
+        .right{
+           height: 100px;
+           width: 100px;
+           background: red; 
+        }
+
+        /* 第二种实现方式 */
+        .container2{
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left"></div>
+        <div class="center"></div>
+        <div class="right"></div>
+    </div>
+    <div class="container2">
+        <div class="left2"></div>
+        <div class="center2"></div>
+        <div class="right2"></div>
+    </div>
+</body>
+</html>
