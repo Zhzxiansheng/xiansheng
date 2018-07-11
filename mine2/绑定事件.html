@@ -17,6 +17,7 @@
         .imgCon img{
             height: 100%;
         }
+
     </style>
 </head>
 <body>
@@ -25,8 +26,19 @@
         <img src="../mine/1.png" alt="示例图片" title="展示图片">
         <p class="imgTitle">这是一段内容文字</p>
     </div>
+    <h4 class="cloneText">要克隆的内容</h4>
+    <button onclick="clonenode()">克隆标签cloneNode</button>
+    <div class="container">
+
+    </div>
 </body>
 <script type="text/javascript">
+
+    function clonenode() {
+        var p = document.querySelector('.cloneText');
+        var item = p.cloneNode(true);
+        document.querySelector(".container").appendChild(item);
+    }
     var clickMe = {
             class: "div",
             init: function init() {
@@ -59,7 +71,7 @@
         } 
     getCookie("auth_key")
 
-
+   
     
 </script>
 </html>
