@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- https://blog.csdn.net/FireBird_one/article/details/81944448 -->
+    <h3>本地es6 转 es5</h3>
+    <ol>
+        <li>npm init 生成package.json</li>
+        <li>Babel-cli => npm install -g babel-cli</li>
+        <li>npm install --save-dev babel-preset-es2015 babel-cli</li>
+        <li>新建.babelrc文件</li>
+        <li>执行命令：babel src/index.js -o dist/index.js</li>
+        <li>简化：pagejson文件"scripts": {
+            "test": "echo \"Error: no test specified\" && exit 1",
+            "build": "babel src/index.js -o dist/index.js"
+          },</li>
+        <li>npm run build</li>
+    </ol>
+</body>
+<script src="./dist/index.js"></script>
+</html>
