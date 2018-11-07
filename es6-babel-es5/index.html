@@ -16,11 +16,20 @@
         <li>新建.babelrc文件</li>
         <li>执行命令：babel src/index.js -o dist/index.js</li>
         <li>简化：pagejson文件"scripts": {
-            "test": "echo \"Error: no test specified\" && exit 1",
             "build": "babel src/index.js -o dist/index.js"
           },</li>
         <li>npm run build</li>
     </ol>
 </body>
 <script src="./dist/index.js"></script>
+<script src="./dist/prototype.js"></script>
+<script src="./dist/class.js"></script>
+<script>
+    console.log(test);
+    test.init();
+    // -----------class 类----------
+    console.log('---------------------------');
+    var testz = new TestZ();
+    testz.init();
+</script>
 </html>
