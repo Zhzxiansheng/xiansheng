@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字体图形的引用</title>
+    <link rel="stylesheet" href="../IcoMoon-Free-master/Font/demo-files/demo.css">
+    <link rel="stylesheet" href="pureFullPage.min.css">
+    <style type='text/css'>
+    .btn{
+        color:red;
+    }
+    .btn:active{
+        color: blue;
+    }
+    </style>
+</head>
+<body>
+    <div class="fullpage" id="pureFullPage">
+        <div class="page" style="background: red">page1</div>
+        <div class="page" style="background: blue">page2</div>
+        <div class="page" style="background: yellow">page3</div>
+    </div>
+    <a href="javascript:;" class="btn">测试点击变色</a>
+    <div class="con" style="text-align:center;">
+        <span class="icon icon-home"></span>
+        <span class="icon icon-home2"></span>
+    </div>
+</body>
+<script type='text/javascript' src="pureFullPage.min.js">
+
+</script>
+<script type='text/javascript'>
+   new PureFullPage({
+                delay:1000,
+                isShowNav: true,
+                definePages:function(){
+                    console.log("发生滚动")
+                }
+            }).init()
+</script>
+</html>

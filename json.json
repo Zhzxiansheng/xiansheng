@@ -1,0 +1,121 @@
+{
+    "code": 200,
+    "data": [
+        {
+            "stage": "3",
+            "groups": [
+                {
+                    "id": 103,
+                    "info": "晋级赛：4月30日-5月1日",
+                    "name": "北京赛区",
+                    "pauseEndTime": 1529856040000,
+                    "pauseStartTime": 1525795240000,
+                    "sort": 120,
+                    "voteId": 26,
+                    "voteName": "2018CJ宅舞"
+                },
+                {
+                    "id": 104,
+                    "info": "晋级赛：6月16日-6月18日",
+                    "name": "上海赛区",
+                    "pauseEndTime": 1529856040000,
+                    "pauseStartTime": 1525795230000,
+                    "sort": 110,
+                    "voteId": 26,
+                    "voteName": "2018CJ宅舞"
+                },
+                {
+                    "id": 105,
+                    "info": "晋级赛：4月29日-5月1日",
+                    "name": "重庆赛区",
+                    "pauseEndTime": 1529856040000,
+                    "pauseStartTime": 1525795240000,
+                    "sort": 100,
+                    "voteId": 26,
+                    "voteName": "2018CJ宅舞"
+                },
+                {
+                    "id": 106,
+                    "info": "晋级赛：4月29日-5月1日",
+                    "name": "华东北赛区",
+                    "pauseEndTime": 1529856040000,
+                    "pauseStartTime": 1525795240000,
+                    "sort": 90,
+                    "voteId": 26,
+                    "voteName": "2018CJ宅舞"
+                },
+                {
+                    "id": 107,
+                    "info": "晋级赛：4月29日-5月1日",
+                    "name": "华东南赛区",
+                    "pauseEndTime": 1529856040000,
+                    "pauseStartTime": 1525795240000,
+                    "sort": 80,
+                    "voteId": 26,
+                    "voteName": "2018CJ宅舞"
+                },
+                {
+                    "id": 108,
+                    "info": "晋级赛：4月30日-5月1日",
+                    "name": "华南赛区",
+                    "pauseEndTime": 1529856040000,
+                    "pauseStartTime": 1525795240000,
+                    "sort": 60,
+                    "voteId": 26,
+                    "voteName": "2018CJ宅舞"
+                },
+                {
+                    "id": 109,
+                    "info": "晋级赛：6月16日-6月17日",
+                    "name": "华北赛区",
+                    "pauseEndTime": 1529856040000,
+                    "pauseStartTime": 1525795240000,
+                    "sort": 50,
+                    "voteId": 26,
+                    "voteName": "2018CJ宅舞"
+                },
+                {
+                    "id": 110,
+                    "info": "晋级赛：6月15日-6月18日",
+                    "name": "东北赛区",
+                    "pauseEndTime": 1529856040000,
+                    "pauseStartTime": 1525795240000,
+                    "sort": 40,
+                    "voteId": 26,
+                    "voteName": "2018CJ宅舞"
+                },
+                {
+                    "id": 111,
+                    "info": "晋级赛：6月2日-6月3日",
+                    "name": "西北赛区",
+                    "pauseEndTime": 1529856040000,
+                    "pauseStartTime": 1525795240000,
+                    "sort": 30,
+                    "voteId": 26,
+                    "voteName": "2018CJ宅舞"
+                },
+                {
+                    "id": 112,
+                    "info": "晋级赛：6月18日",
+                    "name": "华中赛区",
+                    "pauseEndTime": 1529856040000,
+                    "pauseStartTime": 1523238340000,
+                    "sort": 20,
+                    "voteId": 26,
+                    "voteName": "2018CJ宅舞"
+                },
+                {
+                    "id": 113,
+                    "info": "晋级赛：6月23日-6月24日",
+                    "name": "西南赛区",
+                    "pauseEndTime": 1525104000000,
+                    "pauseStartTime": 1523203231000,
+                    "sort": 10,
+                    "voteId": 26,
+                    "voteName": "2018CJ宅舞"
+                }
+            ]
+        }
+    ],
+    "message": "OK"
+}

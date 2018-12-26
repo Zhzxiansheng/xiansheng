@@ -12,7 +12,12 @@
 <script type="text/javascript">
     var obj = {};
     Object.defineProperty(obj, 'hello', {
+        get: function(val) {
+            console.log('get val: '+ val);
+            return val;
+        },
         set: function (val) {
+            console.log('val --', val);
             document.getElementById('bb').innerHTML = val;
             document.getElementById('aa').value = val;
         }
@@ -20,7 +25,8 @@
     document.getElementById('aa').onkeyup = function (e) {
         obj.hello = e.target.value;
     };
-    obj.hello = "";
+    obj.hello = "123";
+    obj.hello;
 
 
 </script>

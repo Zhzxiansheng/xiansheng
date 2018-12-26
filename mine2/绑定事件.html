@@ -41,7 +41,6 @@
         };
     
     clickMe.init();
-
     var strcookie = "sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%221611bad6e3a343-0193f0a4a3dca5-574e6e46-3d10d-1611bad6e3b7ee%22%7D; uuid=01b6c8739b3aa2e2f26178ecd4a2b6ca; analytics=GA1.2.877493596.1516587818; bfd_g=ab2602420a01680600000e6100006efc5a65ab3a; checkReal=0; Hm_lvt_bc75b9260fe72ee13356c664daa5568c=1520566536; tma=191396026.33541955.1516847996883.1521443165303.1521514605056.6; tmd=70.191396026.33541955.1516847996883.; ac_username=%E4%B8%8D%E6%87%82Zhz; auth_key=12668124; auth_key_ac_sha1=1409044650; auth_key_ac_sha1_=4QQR9xz4hIFT2sCAlpfHEEtRXjk=; ac_userimg=http%3A%2F%2Fcdn.aixifan.com%2Fdotnet%2Fartemis%2Fu%2Fcms%2Fwww%2F201709%2F27172138oeaq7yxi.jpg; Hm_lvt_2af69bc2b378fb58ae04ed2a04257ed1=1521597793,1521684889,1521770643,1522029952; clientlanguage=zh_CN; identifier=12668124; usersig=eJxNkF1rgzAUhv*Lt45hYqJ20AupH3T9WqisuwvBRBe6GmvTzG7sv1eDhZ3L5*HlvOf8OsV6-8zaVnLKNPU77rw4nvNksehb2QnKKi26AUM8g56dyRvRXaRqRuUBDKD-X0ouGi0raaMABkEEIJrcRdYD3KRkscxMn4Zhag4fBVr5Se*evvLaTeKdi1zzqs5LNmNscaz6qI5lnCXFD2igMBu*L7ddTq5kZ4Jblr99qwNcbc*kfy-XCotPMp8-lvEjtQeOPdBQEHkggJPU8iRGjiGIQuTjR0NWluraaKpvrbAf*bsD*aFXcg__; supernova=1; analytics_gid=GA1.2.1570835656.1522037026; Hm_lpvt_2af69bc2b378fb58ae04ed2a04257ed1=1522037065; online_status=16502; userLevel=8";
 
     function getCookie(name) {
@@ -59,7 +58,17 @@
         } 
     getCookie("auth_key")
 
+    var obj = {
+            birth: 1990,
+            getAge: function () {
+                var b = this.birth; // 1990
+                var fn = () => new Date().getFullYear() - this.birth; // this指向obj对象
+                return fn();
+            }
+        };
+        obj.getAge(); // 25
+ var fun = () => alert("执行箭头函数");
+ fun();
 
-    
 </script>
 </html>
