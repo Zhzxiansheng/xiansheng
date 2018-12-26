@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+    .div{
+      font-size: 20px;
+    }
+    .p1{
+      font-size: 25px;
+    }
+    .p2{
+      background: blue;
+      height: 1em;
+      font-size: 18px;
+    }
+    .active{
+      color: red;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="list">
+
+    </div>
+    <ul class="ul"></ul>
+    <div class="div">
+      <div class="p1">
+      
+      <p class="p2">em 的参照倍数对象为其自身字体大小，font-size;如果没有向上继承；</p>        
+      </div>
+    </div>
+  </body>
+  <script src="jquery-3.2.1.min.js"></script>
+  <script src="require.js"></script>
+  <script type="text/javascript">
+
+    window.listSize = 10; // 一页多少条数据
+    window.pageNo = 1; // 开始页码数
+    window.maxPage = 1; // 最大页码数
+
+  pageGenerator = function (current, total) {
+      
+      var html, liGenerator, pageElement, pageList, self;
+      self = this;
+      current = current || h.listPageNo;
+      total = total || h.listTotalPage;
+      html = "";
+      pageList = $(".ul");
+      liGenerator = function (start, end, current) {
+        var a, i, lis, ref, ref1;
+        lis = "";
+        for (a = i = ref = start, ref1 = end + 1; ref <= ref1 ? i < ref1 : i > ref1; a = ref <= ref1 ? ++i : --i) {
+          if (a === current) {
+            lis += '<li data-num="' + a + '" class="active">' + a + '</li>';
+          } else {
+            lis += '<li data-num="' + a + '">' + a + '</li>';
+          }
+        }
+        return lis;
+      };
+      if (total <= 3) {
+        html += liGenerator(1, total, current);
+      } else if (current === 1) {
+        html += liGenerator(1, 3, current);
+        html += '<li>...</li>';
+      } else if (current === total) {
+        html += '<li>...</li>';
+        html += liGenerator(total - 2, total, current);
+      } else {
+        if (total - current >= 2) {
+          html += liGenerator(current - 1, current + 1, current);
+          html += '<li>...</li>';
+        } else {
+          html += '<li>...</li>';
+          html += liGenerator(current - 1, current + 1, current);
+        }
+      }
+      pageList.html(html);
+    };
+    var JSON_LIST = [
+        {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/2.jpg',
+          itemName: '秘密花园1'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/2.jpg',
+          itemName: '秘密花园1'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/2.jpg',
+          itemName: '秘密花园1'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/2.jpg',
+          itemName: '秘密花园1'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/2.jpg',
+          itemName: '秘密花园1'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/2.jpg',
+          itemName: '秘密花园1'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/2.jpg',
+          itemName: '秘密花园1'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/2.jpg',
+          itemName: '秘密花园1'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/2.jpg',
+          itemName: '秘密花园1'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/2.jpg',
+          itemName: '秘密花园1'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/1.jpg',
+          itemName: '秘密花园2'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/1.jpg',
+          itemName: '秘密花园2'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/1.jpg',
+          itemName: '秘密花园2'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/1.jpg',
+          itemName: '秘密花园2'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/1.jpg',
+          itemName: '秘密花园2'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/1.jpg',
+          itemName: '秘密花园2'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/1.jpg',
+          itemName: '秘密花园2'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/1.jpg',
+          itemName: '秘密花园2'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/1.jpg',
+          itemName: '秘密花园'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/1.jpg',
+          itemName: '秘密花园2'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/3.jpg',
+          itemName: '秘密花园3'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/3.jpg',
+          itemName: '秘密花园3'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/3.jpg',
+          itemName: '秘密花园3'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/3.jpg',
+          itemName: '秘密花园3'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/3.jpg',
+          itemName: '秘密花园3'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/3.jpg',
+          itemName: '秘密花园3'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/3.jpg',
+          itemName: '秘密花园3'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/3.jpg',
+          itemName: '秘密花园3'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/3.jpg',
+          itemName: '秘密花园3'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/3.jpg',
+          itemName: '秘密花园3'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/4.jpg',
+          itemName: '秘密花园4'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/4.jpg',
+          itemName: '秘密花园4'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/4.jpg',
+          itemName: '秘密花园'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/4.jpg',
+          itemName: '秘密花园'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/4.jpg',
+          itemName: '秘密花园'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/4.jpg',
+          itemName: '秘密花园'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/4.jpg',
+          itemName: '秘密花园'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/4.jpg',
+          itemName: '秘密花园'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/4.jpg',
+          itemName: '秘密花园'
+        }, {
+          id: 1,
+          url: "/v/?ac=4427406",
+          backImg: 'http://cdn.aixifan.com/acfun-H5/public/images/cj2018/4.jpg',
+          itemName: '秘密花园'
+        }
+      ];
+    
+
+    var nowPage = 1; // 刷新依然是当前页码
+      if (location.hash) {
+        nowPage = location.hash.substring(1, location.hash.length);
+      } else {
+        nowPage = pageNo;
+      }
+    function getList(pageNum){
+      $('.list').html();
+      var listHtml = '';
+      maxPage = Math.ceil(JSON_LIST.length / listSize) || 0;
+      var pageNo = pageNum || 1
+      var a = (pageNo -1) * listSize;
+      json = JSON_LIST.slice(a,a+listSize);
+      // for(let i=0;i<json.length;i++){
+      //   console.log(json[i]);
+      //   listHtml += '<div>'+ json[i].itemName+'</div>'
+      // }
+      // 中括号语法： 中括号里面必须是字符串而不是能变量
+      json.forEach(element => {
+        console.log(element);
+        listHtml += '<div>' + element['itemName'] + '</div>'
+      });
+      $('.list').html(listHtml);
+      pageGenerator(parseInt(nowPage),maxPage); // 生成分页器
+    }
+
+    
+    
+    getList(parseInt(nowPage))
+
+    // 页码的点击事件
+    $('.ul').on('click','li',function(){
+      thisPageNum = parseInt($(this).data('num'))
+      if(thisPageNum){
+        pageNo = thisPageNum;
+        nowPage = thisPageNum;
+        location.hash = thisPageNum;
+        getList(thisPageNum);
+      }
+    })
+
+
+    function a(key,value){
+      console.log(typeof arguments);
+      
+    }
+    a('z',10);
+    // 继承 5 1：原型链继承  2.构造继承  3.实例继承  4. 拷贝继承  5.组合继承
+    //父类
+    function Animal(name,age){
+      this.name = name || "动物";
+      this.age = age;
+      this.sleep = function (params) {
+        console.log(this.name+": 正在睡觉");
+      }
+    }
+    Animal.prototype.say = function (msg) {
+      console.log(this.name+ " 说:" + msg);
+    }
+
+    var animal = new Animal();
+    animal.name = "1";
+    animal.sleep();
+
+    // 1原型链  能继承一切东西
+
+    function Cat(){
+
+    }
+    Cat.prototype = new Animal();
+    var cat = new Cat();
+    console.log("原型链")
+    console.log(cat)
+    // cat.name = "猫";
+    // cat.sleep();
+    // cat.say("我说猫");
+
+    //2 构造继承  不能得到父类的prototype上的东西； dog instanceof Animal--  false
+    function Dog(){
+      Animal.call(this);
+    }
+
+    var dog = new Dog();
+    console.log("构造继承");
+    console.log(dog);
+    // dog.say("我是狗") // 报错
+ 
+    //3 实例继承   也可以继承父类的所有
+    function Eyu(){
+      var animal = new Animal();
+      return animal;
+    }
+  var eyu = new Eyu();
+  console.log("实例继承");
+  console.log(eyu);
+  // eyu.say("我是鳄鱼");
+
+  // 4 拷贝继承
+
+  function Yanzi(){
+    var animal = new Animal();
+    for(var i in animal){
+      Yanzi.prototype[i] = animal[i];
+    }
+  }
+
+  console.log("拷贝继承");
+  var yanzi = new Yanzi();
+  console.log(yanzi);
+  // yanzi.name = "燕子";
+  // yanzi.sleep();
+  // yanzi.say("傻子");
+
+  // 5组合继承
+  function Banma(){
+    Animal.call(this);
+  }
+  Banma.prototype = new Animal();
+  var banma = new Banma();
+  console.log("组合继承")
+  console.log(banma);
+
+  </script>
+</html>
